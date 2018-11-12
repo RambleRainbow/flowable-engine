@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "modules\\flowable-ui-idm"
+		},
+		{
+			"path": "modules\\flowable-ldap-configurator"
+		},
+		{
+			"path": "modules\\flowable-ldap"
 		}
 	],
 	"settings": {}
