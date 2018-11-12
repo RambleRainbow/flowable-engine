@@ -7,7 +7,6 @@ target
 .project
 .settings
 .DS_Store
-.vscode
 *.bpmn/
 /userguide/src/en/index.html
 userguide/src/en/output/
