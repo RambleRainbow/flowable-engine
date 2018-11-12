@@ -107,8 +107,8 @@ public class LDAPGroupQueryImpl extends GroupQueryImpl {
                 try {
                     String baseDn = ldapConfigurator.getGroupBaseDn() != null ? ldapConfigurator.getGroupBaseDn() : ldapConfigurator.getBaseDn();
                     NamingEnumeration<?> namingEnum = initialDirContext.search(baseDn, searchExpression, createSearchControls());
-                    while (namingEnum.hasMore()) { // Should be only one
-                        SearchResult result = (SearchResult) namingEnum.next();
+                    while (namingEnum.hasMoreElements()) { // Should be only one
+                        SearchResult result = (SearchResult) namingEnum.nextElement();
 
                         GroupEntity group = new GroupEntityImpl();
                         if (ldapConfigurator.getGroupIdAttribute() != null) {

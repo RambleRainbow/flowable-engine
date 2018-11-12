@@ -100,8 +100,8 @@ public class LDAPUserQueryImpl extends UserQueryImpl {
                     String baseDn = ldapConfigurator.getUserBaseDn() != null ? ldapConfigurator.getUserBaseDn() : ldapConfigurator.getBaseDn();
                     NamingEnumeration<?> namingEnum = initialDirContext.search(baseDn, searchExpression, createSearchControls());
                     UserEntity user = new UserEntityImpl();
-                    while (namingEnum.hasMore()) { // Should be only one
-                        SearchResult result = (SearchResult) namingEnum.next();
+                    while (namingEnum.hasMoreElements()) { // Should be only one
+                        SearchResult result = (SearchResult) namingEnum.nextElement();
                         mapSearchResultToUser(result, user);
                     }
                     namingEnum.close();
@@ -128,8 +128,8 @@ public class LDAPUserQueryImpl extends UserQueryImpl {
                     String baseDn = ldapConfigurator.getUserBaseDn() != null ? ldapConfigurator.getUserBaseDn() : ldapConfigurator.getBaseDn();
                     NamingEnumeration<?> namingEnum = initialDirContext.search(baseDn, searchExpression, createSearchControls());
 
-                    while (namingEnum.hasMore()) {
-                        SearchResult searchResult = (SearchResult) namingEnum.next();
+                    while (namingEnum.hasMoreElements()) {
+                        SearchResult searchResult = (SearchResult) namingEnum.nextElement();
 
                         UserEntity user = new UserEntityImpl();
                         mapSearchResultToUser(searchResult, user);

@@ -161,8 +161,8 @@ public class LDAPIdentityServiceImpl extends IdmIdentityServiceImpl {
                         String baseDn = ldapConfigurator.getUserBaseDn() != null ? ldapConfigurator.getUserBaseDn() : ldapConfigurator.getBaseDn();
                         NamingEnumeration<?> namingEnum = initialDirContext.search(baseDn, searchExpression, createSearchControls());
 
-                        while (namingEnum.hasMore()) { // Should be only one
-                            SearchResult result = (SearchResult) namingEnum.next();
+                        while (namingEnum.hasMoreElements()) { // Should be only one
+                            SearchResult result = (SearchResult) namingEnum.nextElement();
                             userDn = result.getNameInNamespace();
                         }
                         namingEnum.close();
