@@ -1,0 +1,43 @@
+{
+  // 使用 IntelliSense 了解相关属性。 
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "idm",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/flowable-ui-idm-app",
+      "console": "integratedTerminal",
+      "stopOnEntry": false,
+      "mainClass": "org.flowable.ui.idm.application.FlowableIdmApplication",
+      "projectName": "flowable-ui-idm-app",
+      "sourcePaths": [
+        "C:\\Program Files\\Java\\jdk1.8.0_144\\src"
+      ],
+      "args": "",
+      "env": {
+       "LDAP_ENABLED": "true",
+       "LDAP_SERVER": "ldap://192.168.10.10",
+       "LDAP_PORT": "389",
+       "LDAP_USER": "CN=Administrator,CN=Users,DC=Yuannian,DC=Local",
+       "LDAP_PASSWORD": "h0n9l1n9y3l1n~",
+       "LDAP_BASE-DN": "DC=YUANNIAN,DC=LOCAL",
+       "LDAP_QUERY_USER-BY-ID": "(&(objectClass=user)(sAMAccountName={0}))",
+       "LDAP_QUERY_USER-BY-FULL-NAME-LIKE": "(&(objectClass=user)(|({0}=*{1}*)({2}=*{3}*)))",
+       "LDAP_QUERY_ALL-USERS": "(objectClass=user)",
+       "LDAP_QUERY_GROUPS-FOR-USER": "(&(objectCategory=group)(member={0}))",
+       "LDAP_QUERY_ALL-GROUPS": "(objectClass=group)",
+       "LDAP_QUERY_GROUP-BY-ID": "(&(objectClass=group)(sAMAccountName={0}))",
+       "LDAP_ATTRIBUTE_USER-ID": "sAMAccountName",
+       "LDAP_ATTRIBUTE_FIRST-NAME": "displayName",
+       "LDAP_ATTRIBUTE_LAST-NAME": "sAMAccountName",
+       "LDAP_ATTRIBUTE_EMAIL": "mail",
+       "LDAP_ATTRIBUTE_GROUP-ID": "cn",
+       "LDAP_ATTRIBUTE_GROUP-NAME": "cn",
+       "LDAP_CACHE_GROUP-SIZE": "10000"
+      }
+    }
+  ]
+}
