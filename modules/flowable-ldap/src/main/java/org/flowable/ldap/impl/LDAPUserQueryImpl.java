@@ -71,9 +71,16 @@ public class LDAPUserQueryImpl extends UserQueryImpl {
         } else if (getFullNameLikeIgnoreCase() != null) {
             return executeNameQuery(getFullNameLikeIgnoreCase());
 
+        } else if (getGroupId() != null) {
+            return executeMemberOfGroupQuery(getGroupId());
         } else {
             return executeAllUserQuery();
         }
+    }
+
+    protected List<User> executeMemberOfGroupQuery(String groupId) {
+        String searchExpression = ldapConfigurator.getLdapQueryBuilder().buildQueryMemberOfGroup(ldapConfigurator, groupId); 
+        return executeUsersQuery(searchExpression);
     }
 
     protected List<User> executeNameQuery(String name) {

@@ -59,6 +59,7 @@ public class LDAPConfiguration {
     protected String queryAllUsers;
     protected String queryAllGroups;
     protected String queryGroupByGroupId;
+    protected String queryMemberOfGroup;
 
     // Attribute names
     protected String userIdAttribute;
@@ -390,6 +391,15 @@ public class LDAPConfiguration {
 
     public String getGroupTypeAttribute() {
         return groupTypeAttribute;
+    }
+
+    public void setQueryMemberOfGroup(String queryMemberOfGroup) {
+        this.queryMemberOfGroup = queryMemberOfGroup;
+    }
+    public String getQueryMemberOfGroup() {
+        // todo: move this config to properties file
+        return "(&(objectCategory=user)(memberOf=CN={0},OU=GFOP,DC=YUANNIAN,DC=LOCAL))";
+        //return queryMemberOfGroup;
     }
 
     /**
