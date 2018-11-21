@@ -17,6 +17,7 @@ import java.util.List;
 
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
+import javax.naming.directory.Attribute;
 import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
@@ -124,6 +125,24 @@ public class LDAPUserQueryImpl extends UserQueryImpl {
         });
     }
 
+    protected boolean checkFilterRule(final SearchResult searchResult) {
+        //todo: this should be added to config
+        try {
+            Attribute  attr = searchResult.getAttributes().get("memberOf");
+            if(attr != null) {
+                for(int i = 0; i < attr.size(); i++) {
+                    String group = ((String)(attr.get(i))).toUpperCase();
+                    if(group.indexOf("OU=GFOP,DC=YUANNIAN,DC=LOCAL", 0) != -1) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }catch( Exception e) {
+            return false;
+        }
+    }
+
     protected List<User> executeUsersQuery(final String searchExpression) {
         LDAPTemplate ldapTemplate = new LDAPTemplate(ldapConfigurator);
         return ldapTemplate.execute(new LDAPCallBack<List<User>>() {
@@ -138,9 +157,11 @@ public class LDAPUserQueryImpl extends UserQueryImpl {
                     while (namingEnum.hasMoreElements()) {
                         SearchResult searchResult = (SearchResult) namingEnum.nextElement();
 
-                        UserEntity user = new UserEntityImpl();
-                        mapSearchResultToUser(searchResult, user);
-                        result.add(user);
+                        if(checkFilterRule(searchResult)) {
+                            UserEntity user = new UserEntityImpl();
+                            mapSearchResultToUser(searchResult, user);
+                            result.add(user);
+                        }
 
                     }
                     namingEnum.close();
