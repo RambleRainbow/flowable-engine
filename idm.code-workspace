@@ -8,6 +8,15 @@
 		},
 		{
 			"path": "modules\\flowable-ldap"
+		},
+		{
+			"path": "modules\\flowable-ui-modeler"
+		},
+		{
+			"path": "modules\\flowable-ui-task"
+		},
+		{
+			"path": "modules\\flowable-ui-admin"
 		}
 	],
 	"settings": {}
