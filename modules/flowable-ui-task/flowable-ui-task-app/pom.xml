@@ -23,6 +23,17 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions> 
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <exclusions>
@@ -180,7 +191,7 @@
         <dependency>
         	<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<scope>compile</scope>
+            <scope>compile</scope>
         </dependency>
 
         <!-- LOGGING -->
