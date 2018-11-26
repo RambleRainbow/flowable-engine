@@ -17,7 +17,12 @@
 		},
 		{
 			"path": "modules\\flowable-ui-admin"
+		},
+		{
+			"path": "modules\\flowable-app-rest"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
 }
