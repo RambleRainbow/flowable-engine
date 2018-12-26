@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "modules\\flowable-app-rest"
+		},
+		{
+			"path": "modules\\flowable-engine"
 		}
 	],
 	"settings": {
